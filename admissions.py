@@ -6,7 +6,12 @@ from matplotlib import pyplot as plt
 import sklearn
 from sklearn.model_selection import train_test_split
 from mapie.metrics import regression_coverage_score
+import os
 
+password_guess = st.text_input("Enter the password to access the app", type="password")
+if password_guess != 'puneetgoat':
+    st.error("Invalid password")
+    st.stop()
 
 # Set page configuration
 st.set_page_config(page_title="Graduate Admission Predictor", layout="wide")
@@ -349,3 +354,5 @@ with tab4:
     st.metric("Model Coverage", f"{coverage_percentage:.2f}%")
     st.info(f"The model's prediction intervals contain {coverage_percentage:.2f}% of the actual values, " +
             "which aligns well with our 90% confidence level.")
+
+
